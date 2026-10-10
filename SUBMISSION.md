@@ -114,7 +114,10 @@ Practice questions are generic, repetitive and not adapted to the learner.
   tutoring → verified adaptive assessment → learner model → personalization →
   evaluation.
 - Citations for PDF pages, slides and video timestamps in a single knowledge base.
-- Built-in, exportable evaluation instead of hand-picked examples.
+- Built-in, exportable evaluation instead of hand-picked examples. A complete
+  Quick Benchmark run (3 cases, small sample) reached faithfulness 0.71, answer
+  relevancy 0.94, context precision 0.75, context recall 1.00, refusal accuracy
+  3/3 and expected-source match 2/2 (`results/quick_benchmark_2026-10-10.json`).
 - Robust state handling: corrupt or partial learner files repair themselves, and
   failures in one component do not take down the rest of the app.
 

@@ -23,6 +23,7 @@
   <a href="#screenshots">Screenshots</a> ·
   <a href="#track-d-alignment">Track D alignment</a> ·
   <a href="#architecture">Architecture</a> ·
+  <a href="#sample-run-quick-benchmark-10-oct-2026">Results</a> ·
   <a href="#installation">Installation</a> ·
   <a href="#demo-flow">Demo flow</a> ·
   <a href="TRACK_D_STATUS.md">Track D status</a> ·
@@ -267,9 +268,71 @@ you upload:
   replayed through the real EMA update over two sessions. Deterministic, no API
   calls, and clearly labelled as simulation — **not** real-student evidence.
 
-We do not publish fixed benchmark scores here: they depend on the uploaded
-material, the Gemini model and API quota, and RAGAS scores vary between runs.
-Run the benchmark yourself to reproduce them.
+### Sample run (Quick Benchmark, 10 Oct 2026)
+
+One complete Quick Benchmark run on *Kümeleme.pptx* (plus one PDF in the same
+session) with `gemini-3.5-flash-lite`. Raw output:
+[`results/quick_benchmark_2026-10-10.json`](results/quick_benchmark_2026-10-10.json)
+· [`.csv`](results/quick_benchmark_2026-10-10.csv).
+
+| Metric | Result | Cases |
+|---|---|---|
+| Faithfulness (avg) | **0.71** | 2 in-material |
+| Answer Relevancy (avg) | **0.94** | 2 in-material |
+| Context Precision (avg) | **0.75** | 2 in-material |
+| Context Recall (avg) | **1.00** | 2 in-material |
+| Refusal Accuracy (refuse vs. answer decided correctly) | **3 / 3** | 1 off-material + 2 in-material |
+| Expected Source Match | **2 / 2** | 2 in-material |
+
+> ⚠️ This is a **single, small run** (3 cases), shown as evidence that the
+> pipeline works end to end, not as a general accuracy claim. Scores depend on
+> the uploaded material, the model and API quota, and RAGAS scores vary between
+> runs. Run the *Full Benchmark* to evaluate all 6 cases.
+
+**Example from this run** — the question *"Minkowski uzaklığı nedir?"*
+("What is the Minkowski distance?") was answered with citations on every claim
+(excerpt):
+
+> Minkowski uzaklığı, *p* sayıda değişken göz önüne alınarak gözlem değerleri
+> arasındaki mesafeyi hesaplamak için kullanılan genel bir uzaklık bağıntısıdır
+> **[Kümeleme.pptx, Slide 7]**. Kümeleme çözümlemelerinde Öklit ve Manhattan
+> uzaklıkları ile birlikte tercih edilen bu ölçüt **[Kümeleme.pptx, Slide 5]** …
+>
+> *(EN: "Minkowski distance is a general formula for the distance between
+> observations over p variables [Slide 7]. Used in cluster analysis together with
+> the Euclidean and Manhattan distances [Slide 5] …")*
+
+The off-material question *"Yapay sinir ağlarında backpropagation algoritması
+nedir?"* ("What is backpropagation in neural networks?") was refused with the
+fixed sentence *"Bu bilgi yüklenen ders materyallerinde bulunamadı."*
+("This information was not found in the uploaded course material.")
+
+### Running the benchmark on your own material
+
+The demo lecture deck is course material and is **not included** in this
+repository. To benchmark any material of your own, edit
+[`evaluation_testset.json`](evaluation_testset.json):
+
+```json
+{
+  "id": "my_case_01",
+  "question": "What is k-means trying to minimize?",
+  "reference_answer": "The total within-cluster squared error.",
+  "expected_source": "my_deck.pptx, Slide 12",
+  "should_refuse": false
+}
+```
+
+Add at least one `"should_refuse": true` question that your material does not
+cover, upload the files, and run the benchmark in the **🧪 Evaluation** tab.
+
+### Language
+
+LearnLens is not tied to Turkish: tutor answers follow the language of the
+student's question, and generated questions follow the language of the
+material. The demo material is a Turkish lecture deck. The fixed refusal sentence
+is Turkish (*"This information was not found in the uploaded course
+material."*); English refusal phrasings are recognised as well.
 
 ## RAGAS metrics
 
@@ -295,7 +358,8 @@ embedding wrapper so that dimensions always match.
 - Gemini free-tier quotas are small. RAGAS makes many calls per case, so the Full
   Benchmark can hit HTTP 429; Quick Benchmark is the default.
 - The benchmark is small (6 cases, one lecture deck); expected-source matching
-  assumes the deck is uploaded as `Kümeleme.pptx`.
+  assumes the deck is uploaded as `Kümeleme.pptx`, which is not redistributed
+  here (see *Running the benchmark on your own material*).
 - RAGAS uses the same model family as the tutor as its judge (possible
   self-evaluation bias); scores vary between runs.
 - Refusal detection is phrase-based (deterministic, no extra LLM call).
@@ -389,6 +453,7 @@ LearnLens-AI/
 ├── .env.example             # Template for GEMINI_API_KEY
 ├── .gitignore
 ├── evaluation_testset.json  # Team-built benchmark test set
+├── results/                 # Snapshot of a complete Quick Benchmark run
 ├── assets/
 │   ├── banner.svg           # README banner
 │   └── screenshots/         # README screenshots
