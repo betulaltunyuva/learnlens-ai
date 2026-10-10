@@ -1,0 +1,28 @@
+# LearnLens AI — Python 3.10+
+# Tested with the versions noted in comments.
+
+# UI (tested 1.64.0; uses width="stretch", st.toggle, ProgressColumn)
+streamlit>=1.50,<2
+
+# Gemini SDK: generation, embeddings, Files API (tested 2.25.0)
+google-genai>=1.20
+
+# PDF text + embedded figure extraction (tested 1.28.2; uses "import pymupdf")
+pymupdf>=1.24
+
+# PowerPoint text, tables and images (tested 1.0.2)
+python-pptx>=1.0
+
+numpy>=1.26
+python-dotenv>=1.0
+
+# RAGAS evaluation. Pinned: the app uses the 0.4.x APIs
+# (ragas.metrics.collections, llm_factory with an AsyncOpenAI client).
+ragas==0.4.3
+
+# OpenAI-compatible client used by RAGAS against Gemini's
+# OpenAI-compatible endpoint (no OpenAI account needed; tested 1.109.1)
+openai>=1.40,<2
+
+# Pinned for compatibility with ragas 0.4.3's import chain.
+langchain-community==0.3.31

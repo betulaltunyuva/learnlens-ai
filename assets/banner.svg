@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" role="img" aria-label="LearnLens AI — multimodal, source-grounded adaptive tutor">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1230"/>
+      <stop offset="0.55" stop-color="#1B1F5E"/>
+      <stop offset="1" stop-color="#3B2F8F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#818CF8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#818CF8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A5B4FC"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#A5B4FC" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#A5B4FC" stop-opacity="0.9"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#FFFFFF" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="1280" height="420" rx="24" fill="url(#grid)"/>
+
+  <!-- Left: title -->
+  <g font-family="Segoe UI, Helvetica Neue, Arial, sans-serif">
+    <text x="64" y="92" fill="#A5B4FC" font-size="16" font-weight="600" letter-spacing="3">MULTIMODAL AI HACKATHON 2026 · TRACK D</text>
+    <text x="62" y="168" fill="#FFFFFF" font-size="72" font-weight="700">LearnLens <tspan fill="#A5B4FC">AI</tspan></text>
+    <text x="64" y="214" fill="#E0E7FF" font-size="24" font-weight="500">A source-grounded tutor that learns from</text>
+    <text x="64" y="246" fill="#E0E7FF" font-size="24" font-weight="500">your own PDFs, slides and lecture videos.</text>
+
+    <g font-size="15" font-weight="600">
+      <rect x="64" y="284" width="168" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.08" stroke="#A5B4FC" stroke-opacity="0.5"/>
+      <text x="148" y="307" fill="#E0E7FF" text-anchor="middle">Cited answers</text>
+      <rect x="244" y="284" width="196" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.08" stroke="#A5B4FC" stroke-opacity="0.5"/>
+      <text x="342" y="307" fill="#E0E7FF" text-anchor="middle">Adaptive questions</text>
+      <rect x="452" y="284" width="168" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.08" stroke="#A5B4FC" stroke-opacity="0.5"/>
+      <text x="536" y="307" fill="#E0E7FF" text-anchor="middle">Learner model</text>
+    </g>
+    <text x="64" y="364" fill="#94A3B8" font-size="15">Powered by Google Gemini · Streamlit · RAGAS</text>
+  </g>
+
+  <!-- Right: modality inputs -> lens -> grounded answer -->
+  <g font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-weight="700" font-size="13">
+    <!-- input cards -->
+    <g>
+      <rect x="700" y="70" width="92" height="56" rx="12" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.18"/>
+      <rect x="716" y="84" width="22" height="28" rx="3" fill="#F87171"/>
+      <text x="746" y="103" fill="#FFFFFF">PDF</text>
+
+      <rect x="700" y="142" width="92" height="56" rx="12" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.18"/>
+      <rect x="714" y="158" width="28" height="22" rx="3" fill="#FB923C"/>
+      <rect x="719" y="163" width="12" height="3" rx="1.5" fill="#FFFFFF"/>
+      <rect x="719" y="169" width="18" height="3" rx="1.5" fill="#FFFFFF" fill-opacity="0.8"/>
+      <text x="748" y="175" fill="#FFFFFF">Slides</text>
+
+      <rect x="700" y="214" width="92" height="56" rx="12" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.18"/>
+      <rect x="714" y="230" width="28" height="22" rx="4" fill="#34D399"/>
+      <path d="M724 235 L734 241 L724 247 Z" fill="#0B1230"/>
+      <text x="748" y="247" fill="#FFFFFF">Video</text>
+
+      <rect x="700" y="286" width="92" height="56" rx="12" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.18"/>
+      <rect x="714" y="302" width="28" height="22" rx="3" fill="#60A5FA"/>
+      <path d="M716 322 L725 311 L731 317 L735 313 L741 322 Z" fill="#0B1230" fill-opacity="0.7"/>
+      <circle cx="736" cy="307" r="2.5" fill="#FFFFFF"/>
+      <text x="748" y="319" fill="#FFFFFF">Image</text>
+    </g>
+
+    <!-- flows into lens -->
+    <g fill="none" stroke="url(#flow)" stroke-width="2.5" stroke-linecap="round">
+      <path d="M792 98 C 840 98, 850 206, 880 206"/>
+      <path d="M792 170 C 840 170, 850 206, 880 206"/>
+      <path d="M792 242 C 840 242, 850 206, 880 206"/>
+      <path d="M792 314 C 840 314, 850 206, 880 206"/>
+    </g>
+
+    <!-- lens -->
+    <circle cx="930" cy="206" r="92" fill="url(#glow)"/>
+    <circle cx="930" cy="206" r="50" fill="#0B1230" stroke="url(#lens)" stroke-width="8"/>
+    <circle cx="930" cy="206" r="34" fill="#6366F1" fill-opacity="0.18"/>
+    <path d="M912 192 A 24 24 0 0 1 940 182" fill="none" stroke="#FFFFFF" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round"/>
+    <line x1="966" y1="242" x2="986" y2="262" stroke="url(#lens)" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- arrow to output -->
+    <path d="M992 206 L1024 206" stroke="#A5B4FC" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M1020 200 L1028 206 L1020 212" fill="none" stroke="#A5B4FC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- grounded answer card -->
+    <rect x="1036" y="96" width="196" height="220" rx="16" fill="#FFFFFF"/>
+    <text x="1054" y="126" fill="#4F46E5" font-size="11" letter-spacing="1.5">GROUNDED ANSWER</text>
+    <rect x="1054" y="140" width="160" height="7" rx="3.5" fill="#CBD5E1"/>
+    <rect x="1054" y="155" width="138" height="7" rx="3.5" fill="#CBD5E1"/>
+    <rect x="1054" y="170" width="150" height="7" rx="3.5" fill="#CBD5E1"/>
+    <rect x="1054" y="188" width="132" height="22" rx="11" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="1120" y="203" fill="#4338CA" font-size="11" text-anchor="middle">[deck.pptx, Slide 7]</text>
+    <rect x="1054" y="216" width="122" height="22" rx="11" fill="#ECFDF5" stroke="#A7F3D0"/>
+    <text x="1115" y="231" fill="#047857" font-size="11" text-anchor="middle">[lecture.mp4, 02:10]</text>
+
+    <text x="1054" y="262" fill="#64748B" font-size="11" letter-spacing="1.5">MASTERY</text>
+    <rect x="1054" y="272" width="160" height="8" rx="4" fill="#E2E8F0"/>
+    <rect x="1054" y="272" width="122" height="8" rx="4" fill="#6366F1"/>
+    <rect x="1054" y="288" width="160" height="8" rx="4" fill="#E2E8F0"/>
+    <rect x="1054" y="288" width="58" height="8" rx="4" fill="#F59E0B"/>
+  </g>
+</svg>

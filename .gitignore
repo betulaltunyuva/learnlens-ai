@@ -1,0 +1,40 @@
+# Secrets
+.env
+.streamlit/secrets.toml
+
+# Local tool / IDE settings
+.claude/
+.vscode/
+.idea/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Temporary files (atomic JSON writes, editors, OS)
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Local learner data (personal progress; recreated automatically)
+learner_state.json
+
+# Local cache of Gemini knowledge tags for your own course material
+# (recreated automatically, may contain course content)
+knowledge_tags.json
+
+# Generated benchmark output (re-created by "Run Benchmark").
+# To publish a specific complete run, force-add it:
+#   git add -f evaluation_results.json evaluation_results.csv
+evaluation_results.json
+evaluation_results.csv
+
+# evaluation_testset.json is the team-built test set: keep it committed.

@@ -1,0 +1,48 @@
+{
+    "name": "Kümeleme demo test set",
+    "material": "Kümeleme.pptx",
+    "test_cases": [
+        {
+            "id": "kumeleme_01",
+            "question": "Minkowski uzaklığı nedir?",
+            "reference_answer": "Minkowski uzaklığı, p sayıda değişken dikkate alınarak gözlemler arasındaki uzaklığı hesaplamak için kullanılan genel bir uzaklık bağıntısıdır.",
+            "expected_source": "Kümeleme.pptx, Slide 7",
+            "should_refuse": false
+        },
+        {
+            "id": "kumeleme_02",
+            "question": "Simetrik uzaklık matrisinde d(i,j) ile d(j,i) arasındaki ilişki nedir?",
+            "reference_answer": "Simetrik uzaklık matrisinde d(i,j)=d(j,i) kabul edilir.",
+            "expected_source": "Kümeleme.pptx, Slide 4",
+            "should_refuse": false
+        },
+        {
+            "id": "kumeleme_03",
+            "question": "En yakın komşu algoritmasında iki küme arasındaki uzaklık nasıl belirlenir?",
+            "reference_answer": "İki kümenin içerdiği gözlemler arasında birbirine en yakın olanların uzaklığı iki küme arasındaki uzaklık olarak alınır.",
+            "expected_source": "Kümeleme.pptx, Slide 12",
+            "should_refuse": false
+        },
+        {
+            "id": "kumeleme_04",
+            "question": "En uzak komşu algoritmasında iki küme arasındaki uzaklık nasıl belirlenir?",
+            "reference_answer": "İki kümenin birbirine en uzak elemanları arasındaki mesafe kümeler arasındaki uzaklık olarak alınır.",
+            "expected_source": "Kümeleme.pptx, Slide 19",
+            "should_refuse": false
+        },
+        {
+            "id": "kumeleme_05",
+            "question": "k-ortalamalar yönteminin temel amacı nedir?",
+            "reference_answer": "k-ortalamalar yönteminin amacı verilen K değeri için toplam kare hatayı minimize eden kümeleri bulmaktır.",
+            "expected_source": "Kümeleme.pptx, Slide 24",
+            "should_refuse": false
+        },
+        {
+            "id": "off_material_01",
+            "question": "Yapay sinir ağlarında backpropagation algoritması nedir?",
+            "reference_answer": "Bu bilgi yüklenen ders materyallerinde bulunamadı.",
+            "expected_source": "",
+            "should_refuse": true
+        }
+    ]
+}
