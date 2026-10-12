@@ -6,6 +6,12 @@
 
 LearnLens AI
 
+## Links
+
+- Demo video: https://youtu.be/5sruuk1WHsA
+- Code: https://github.com/betulaltunyuva/learnlens-ai
+- Devpost: https://devpost.com/software/learnlens-ai-aolqb2
+
 ## Elevator pitch
 
 A multimodal tutor that learns from your own PDFs, slides and lecture videos,

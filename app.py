@@ -1438,7 +1438,7 @@ RULES:
 
 1. Use only the provided slide content and images.
 2. Do not invent information.
-3. Answer in the same language as the student.
+3. Answer in the same language as the student's question.
 4. Explain clearly like a tutor.
 5. Cite relevant slides using:
 
@@ -1861,7 +1861,11 @@ STRICT GROUNDING RULES:
 3. If the material does not contain enough information,
    clearly say:
    "Bu bilgi yüklenen ders materyallerinde bulunamadı."
-4. Answer in the same language as the student.
+4. Write the whole answer in the language of the STUDENT
+   QUESTION below (an English question gets an English
+   answer), even if the retrieved material or the learning
+   goal is in another language. Only the refusal sentence
+   in rule 3 is always written exactly as given.
 5. Explain concepts clearly like a tutor.
 6. Every important claim must contain its source citation.
 7. Preserve the exact citation supplied below.
@@ -1877,6 +1881,8 @@ RETRIEVED MATERIAL:
 STUDENT QUESTION:
 
 {question}
+
+Answer in the language of the student question above.
 """
 
     contents = [

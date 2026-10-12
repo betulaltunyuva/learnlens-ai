@@ -20,6 +20,14 @@
 </p>
 
 <p align="center">
+  <a href="https://youtu.be/5sruuk1WHsA">
+    <img src="https://img.youtube.com/vi/5sruuk1WHsA/maxresdefault.jpg" alt="Watch the LearnLens AI demo video on YouTube" width="720">
+  </a><br>
+  <b>▶ <a href="https://youtu.be/5sruuk1WHsA">Watch the 3-minute demo</a></b>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/5sruuk1WHsA">Demo video</a> ·
   <a href="#screenshots">Screenshots</a> ·
   <a href="#track-d-alignment">Track D alignment</a> ·
   <a href="#architecture">Architecture</a> ·
@@ -307,10 +315,38 @@ nedir?"* ("What is backpropagation in neural networks?") was refused with the
 fixed sentence *"Bu bilgi yüklenen ders materyallerinde bulunamadı."*
 ("This information was not found in the uploaded course material.")
 
+### Try it with the included sample material
+
+The Turkish lecture deck used for the run above is course material and is
+**not included** in this repository. Instead,
+[`sample_materials/`](sample_materials/) contains an English sample lecture on
+clustering, written for this project and used in the demo video:
+
+| File | Modality | Content |
+|---|---|---|
+| `Clustering_Lecture.pptx` | Slides (8, with 3 figures and a table) | Distance measures, distance matrix, hierarchical clustering, linkage methods, k-means, choosing K |
+| `kmeans_notes.pdf` | PDF (2 pages, with figures) | k-means objective, algorithm, worked example, elbow method |
+| `hierarchical_clustering_lecture.mp4` | Video (1:48, narrated) | Reading a dendrogram, single vs. complete linkage, hierarchical clustering vs. k-means |
+| `evaluation_testset_sample.json` | Benchmark test set | 5 in-material questions with expected slide / page citations + 1 off-material question |
+
+To benchmark it, copy the sample test set over the default one, upload the
+`.pptx` and `.pdf`, and click **Run Benchmark** in the **🧪 Evaluation** tab:
+
+```bash
+# Windows
+copy sample_materials\evaluation_testset_sample.json evaluation_testset.json
+# macOS / Linux
+cp sample_materials/evaluation_testset_sample.json evaluation_testset.json
+```
+
+`git checkout evaluation_testset.json` restores the original test set. In our
+check on 12 Oct 2026, a Quick Benchmark on this sample set completed 3 / 3
+cases with refusal accuracy 3 / 3 and expected-source match 2 / 2 (again a
+small run, not a general accuracy claim).
+
 ### Running the benchmark on your own material
 
-The demo lecture deck is course material and is **not included** in this
-repository. To benchmark any material of your own, edit
+To benchmark any material of your own, edit
 [`evaluation_testset.json`](evaluation_testset.json):
 
 ```json
@@ -328,11 +364,12 @@ cover, upload the files, and run the benchmark in the **🧪 Evaluation** tab.
 
 ### Language
 
-LearnLens is not tied to Turkish: tutor answers follow the language of the
-student's question, and generated questions follow the language of the
-material. The demo material is a Turkish lecture deck. The fixed refusal sentence
-is Turkish (*"This information was not found in the uploaded course
-material."*); English refusal phrasings are recognised as well.
+LearnLens is not tied to Turkish: tutor answers are written in the language of
+the student's question (also when the material is in another language), and
+generated questions follow the language of the material. The benchmark deck
+above is Turkish; the sample material and the demo video are English. The fixed
+refusal sentence is Turkish (*"This information was not found in the uploaded
+course material."*); English refusal phrasings are recognised as well.
 
 ## RAGAS metrics
 
@@ -359,7 +396,8 @@ embedding wrapper so that dimensions always match.
   Benchmark can hit HTTP 429; Quick Benchmark is the default.
 - The benchmark is small (6 cases, one lecture deck); expected-source matching
   assumes the deck is uploaded as `Kümeleme.pptx`, which is not redistributed
-  here (see *Running the benchmark on your own material*).
+  here. The English sample set in `sample_materials/` can be run instead (see
+  *Try it with the included sample material*).
 - RAGAS uses the same model family as the tutor as its judge (possible
   self-evaluation bias); scores vary between runs.
 - Refusal detection is phrase-based (deterministic, no extra LLM call).
@@ -430,13 +468,14 @@ The app opens at http://localhost:8501. Local files created while running
 ## Demo flow
 
 1. **🧭 Learner Profile** — choose a level, enter a goal, pick a style, *Save*.
-2. **📽️ Slide Understanding** — upload a lecture deck (for the benchmark:
-   `Kümeleme.pptx`); optionally add a PDF and a short video.
+2. **📽️ Slide / 📄 PDF / 🎞️ Video** — upload the files from
+   [`sample_materials/`](sample_materials/) (or your own lecture material).
 3. **🧭 Learner Profile → Start Diagnostic** — answer 3 questions; the level and
    starting difficulty update (see the sidebar).
-4. **🎓 Unified Tutor** — ask *"Minkowski uzaklığı nedir?"* → cited answer and a
-   learner-model update; then ask *"Yapay sinir ağlarında backpropagation
-   algoritması nedir?"* → refusal. Open *🧩 Knowledge Structure*.
+4. **🎓 Unified Tutor** — ask *"When should I use hierarchical clustering
+   instead of k-means?"* → one answer citing slides, a PDF page and a video
+   timestamp, plus a learner-model update; then ask *"What is backpropagation
+   in neural networks?"* → refusal. Open *🧩 Knowledge Structure*.
 5. **🧠 Adaptive Assessment** — answer a few questions; watch *Next Difficulty*.
 6. **📊 Mastery Dashboard** — topic accuracy, EMA mastery, recommended focus,
    Likely Misconceptions.
@@ -454,6 +493,7 @@ LearnLens-AI/
 ├── .gitignore
 ├── evaluation_testset.json  # Team-built benchmark test set
 ├── results/                 # Snapshot of a complete Quick Benchmark run
+├── sample_materials/        # English sample lecture (PPTX, PDF, video) + sample test set
 ├── assets/
 │   ├── banner.svg           # README banner
 │   └── screenshots/         # README screenshots

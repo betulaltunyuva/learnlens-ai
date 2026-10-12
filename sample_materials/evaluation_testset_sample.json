@@ -1,0 +1,48 @@
+{
+    "name": "Sample clustering test set (English)",
+    "material": "Clustering_Lecture.pptx",
+    "test_cases": [
+        {
+            "id": "sample_01",
+            "question": "What is the Minkowski distance?",
+            "reference_answer": "The Minkowski distance generalizes the Euclidean and Manhattan distances: d(i,j) = (sum of |x_ik - x_jk|^m)^(1/m). m = 1 gives the Manhattan distance and m = 2 gives the Euclidean distance.",
+            "expected_source": "Clustering_Lecture.pptx, Slide 3",
+            "should_refuse": false
+        },
+        {
+            "id": "sample_02",
+            "question": "In a distance matrix, what is the relationship between d(i,j) and d(j,i)?",
+            "reference_answer": "The distance matrix is symmetric, so d(i,j) = d(j,i).",
+            "expected_source": "Clustering_Lecture.pptx, Slide 4",
+            "should_refuse": false
+        },
+        {
+            "id": "sample_03",
+            "question": "How does single linkage measure the distance between two clusters?",
+            "reference_answer": "Single linkage uses the distance between the two closest observations of the two clusters.",
+            "expected_source": "Clustering_Lecture.pptx, Slide 6",
+            "should_refuse": false
+        },
+        {
+            "id": "sample_04",
+            "question": "What does the k-means algorithm minimize?",
+            "reference_answer": "k-means minimizes the total within-cluster sum of squared errors (SSE) for a given number of clusters K.",
+            "expected_source": "Clustering_Lecture.pptx, Slide 7",
+            "should_refuse": false
+        },
+        {
+            "id": "sample_05",
+            "question": "How does the elbow method help choose the number of clusters K?",
+            "reference_answer": "It plots the SSE against K and picks the K at the elbow, after which adding another cluster only gives a small decrease in SSE.",
+            "expected_source": "kmeans_notes.pdf, Page 2",
+            "should_refuse": false
+        },
+        {
+            "id": "off_material_01",
+            "question": "What is backpropagation in neural networks?",
+            "reference_answer": "Bu bilgi yüklenen ders materyallerinde bulunamadı.",
+            "expected_source": "",
+            "should_refuse": true
+        }
+    ]
+}
